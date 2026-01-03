@@ -1,0 +1,18 @@
+LAUNCH THE CONTAINER
+===
+
+$ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Password_1234" -e "MSSQL_PID=Evaluation" -p 1433:1433 --name sql_server_container --hostname sql_server_container -d mcr.microsoft.com/mssql/server:2025-latest
+
+COPY THE BACKUP
+===
+
+$ docker exec -it sql_server_container mkdir -p /var/opt/mssql/backups
+
+$ docker cp "AdventureWorks2025.bak" sql_server_container:/var/opt/mssql/backups/AdventureWorks2025.bak
+
+RESTORE THE BACKUP
+===
+
+$ docker exec -it sql_server_container /opt/mssql-tools18/bin/sqlcmd -S localhost,1433 -U sa -P "Password_1234" -C -Q "RESTORE FILELISTONLY FROM DISK = '/var/opt/mssql/backups/AdventureWorks2025.bak'"
+
+$ docker exec -it sql_server_container /opt/mssql-tools18/bin/sqlcmd -S localhost,1433 -U sa -P "Password_1234" -C -Q "RESTORE DATABASE AdventureWorks2025 FROM DISK = '/var/opt/mssql/backups/AdventureWorks2025.bak' WITH MOVE 'AdventureWorks' TO '/var/opt/mssql/data/AdventureWorks2025.mdf', MOVE 'AdventureWorks_log' TO '/var/opt/mssql/data/AdventureWorks2025_log.ldf'"
