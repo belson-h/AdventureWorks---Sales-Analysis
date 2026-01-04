@@ -6,6 +6,8 @@ SELECT * FROM Sales.SalesOrderHeader
 SELECT * FROM Sales.Customer
 SELECT * FROM Sales.Store
 
+--AOV per region and customer type
+
 --Opt1 - needs sorting AOV per region and customer type when creating vis
 
 SELECT
@@ -35,7 +37,7 @@ ORDER BY AverageOrderValue DESC;
 
 --Opt2 - with CTE and window function to pre-sort AOV per region and customer type
 
-;WITH AOV AS (
+WITH AOV AS (
     SELECT
         CONCAT(st.Name, ', ', st.CountryRegionCode) AS Region,
         CASE

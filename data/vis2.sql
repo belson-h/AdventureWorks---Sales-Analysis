@@ -6,6 +6,7 @@ SELECT * FROM Production.ProductSubcategory
 SELECT * FROM Production.Product
 SELECT * FROM Sales.SalesOrderDetail
 
+-- Revenue per category
 
 --Opt1:
 SELECT 

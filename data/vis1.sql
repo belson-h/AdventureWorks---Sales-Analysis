@@ -5,6 +5,7 @@ SELECT * FROM Production.ProductCategory
 SELECT * FROM Production.ProductSubcategory
 SELECT * FROM Production.Product
 
+-- Products per category
 
 SELECT
     pc.Name AS CategoryName,

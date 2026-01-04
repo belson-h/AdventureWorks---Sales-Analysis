@@ -3,6 +3,7 @@ USE AdventureWorks2025
 
 SELECT * FROM Sales.SalesOrderHeader
 
+-- Total sales and total orders per year
 
 SELECT
     YEAR(orderDate) AS OrderYear,

@@ -5,6 +5,7 @@ SELECT * FROM Sales.SalesTerritory
 SELECT * FROM Sales.SalesOrderHeader
 SELECT * FROM Sales.Customer
 
+--Total sales and customer per region
 
 SELECT
     CONCAT(st.Name, ', ', st.CountryRegionCode) AS RegionNameCode,

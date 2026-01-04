@@ -3,6 +3,7 @@ USE AdventureWorks2025
 
 SELECT * FROM Sales.SalesOrderHeader
 
+-- Revenue Trend Overtime
 
 SELECT
     DATEFROMPARTS(YEAR(OrderDate), MONTH(OrderDate), 1) AS OrderMonth,
